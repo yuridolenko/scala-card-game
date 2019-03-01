@@ -1,16 +1,16 @@
 package com.test.domain
 
 import akka.actor.Actor
-import com.test.SimpleLog
+import com.test.util.SimpleLog
 
 case class Game() extends Actor with SimpleLog {
 
   def play(player1: Player, player2: Player): List[Player] = {
     val card1 = player1 peekCard()
-    log(s"Player 1 peeked: $card1")
+    info(s"Player 1 peeked: $card1")
 
     val card2 = player2 peekCard()
-    log(s"Player 2 peeked: $card2")
+    info(s"Player 2 peeked: $card2")
 
     card1 match {
       case card if card > card2 => List(player1)

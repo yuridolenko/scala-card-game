@@ -4,7 +4,7 @@ import akka.actor.{ActorSystem, Props}
 import akka.pattern.ask
 import akka.util.Timeout
 import com.test.domain._
-import com.test.util.DeckGenerator
+import com.test.util.{DeckGenerator, SimpleLog}
 
 import scala.concurrent.Await
 import scala.concurrent.duration._
@@ -16,12 +16,12 @@ object CardGame extends App with SimpleLog {
 
   val cardAmount = deck.length
 
-  log(s"Current deck is: \n\t${deck.mkString("\n\t")}")
+  info(s"Current deck is: \n\t${deck.mkString("\n\t")}")
 
   val ded = Player("Ded")
   val god = Player("God")
 
-  log(s"New Game started. $ded VS $god")
+  info(s"New Game started. $ded VS $god")
 
   while (ded.hand.size < cardAmount / 2 && god.hand.size < cardAmount / 2 && deck.nonEmpty) {
     ded ++ deck.dequeue
@@ -41,14 +41,14 @@ object CardGame extends App with SimpleLog {
   def makeMove(round: Int): Unit = {
     val future = game ? Round(ded, god)
     val result = Await.result(future, timeout.duration).asInstanceOf[List[Player]]
-    log(s"round: $round finished, winners: ${result.mkString(" ")}")
+    info(s"round: $round finished, winners: ${result.mkString(" ")}")
   }
 
-  log("LET THE GAME BEGIN!")
+  info("LET THE GAME BEGIN!")
 
   (1 to cardAmount / 2).foreach(makeMove)
 
-  log(s"Game is done $ded wins: ${ded.winningAmount}, $god wins: ${god.winningAmount}")
+  info(s"Game is done $ded wins: ${ded.winningAmount}, $god wins: ${god.winningAmount}")
 
   system.terminate()
 
