@@ -4,16 +4,14 @@ import scala.collection.mutable
 import scala.collection.mutable.ListBuffer
 import scala.util.Random
 
-case class Player (name: String, hand: mutable.ListBuffer[Card] = ListBuffer(), var winningAmount: Int = 0) {
+case class Player(name: String, hand: mutable.ListBuffer[Card] = ListBuffer(), var winningAmount: Int = 0) {
 
   override def toString: String = name
 
-  // Add card
   def ++(card: Card): Unit = hand += card
 
-  // Peek random card
   def peekCard(): Card = hand.remove(Random.nextInt(hand.length))
 
-  def win(): Unit = winningAmount +=1
+  def win(): Unit = winningAmount += 1
 
 }

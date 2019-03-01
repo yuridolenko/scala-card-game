@@ -2,7 +2,6 @@ package com.test.domain
 
 import akka.actor.Actor
 import com.test.SimpleLog
-import com.typesafe.scalalogging.LazyLogging
 
 case class Game() extends Actor with SimpleLog {
 
@@ -15,7 +14,7 @@ case class Game() extends Actor with SimpleLog {
 
     card1 match {
       case card if card > card2 => List(player1)
-      case card if card1 < card2 => List(player2)
+      case card if card < card2 => List(player2)
       case _ => List(player1, player2)
     }
   }

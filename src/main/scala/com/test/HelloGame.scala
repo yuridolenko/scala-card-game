@@ -41,7 +41,7 @@ object HelloGame extends App with SimpleLog {
   def makeMove(round: Int): Unit = {
     val future = game ? Round(ded, god)
     val result = Await.result(future, timeout.duration).asInstanceOf[List[Player]]
-    log(s"round: $round, winners: ${result.mkString(" ")}")
+    log(s"round: $round finished, winners: ${result.mkString(" ")}")
   }
 
   log("LET THE GAME BEGIN!")

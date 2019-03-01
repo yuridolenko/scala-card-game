@@ -7,9 +7,9 @@ import scala.util.Random
 
 object DeckGenerator {
 
-  def randomCardType(): CardType.Value = CardType(Random.nextInt(CardType.maxId))
+  private def randomCardType(): CardType.Value = CardType(Random.nextInt(CardType.maxId))
 
-  def randomCardWeight(max: Int): Int = Random.nextInt(max)
+  private def randomCardWeight(max: Int): Int = Random.nextInt(max)
 
   def generate(size: Int, maxCardWeight: Int): mutable.Queue[Card] = {
 

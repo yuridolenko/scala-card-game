@@ -11,3 +11,4 @@ libraryDependencies ++= Seq(
 
   "org.scalatest" %% "scalatest" % "3.2.0-SNAP10" % Test
 )
+
