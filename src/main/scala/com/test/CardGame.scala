@@ -5,12 +5,12 @@ import akka.pattern.ask
 import akka.util.Timeout
 import com.test.domain._
 import com.test.util.DeckGenerator
-import com.typesafe.scalalogging.LazyLogging
 
 import scala.concurrent.Await
 import scala.concurrent.duration._
+import scala.language.postfixOps
 
-object HelloGame extends App with SimpleLog {
+object CardGame extends App with SimpleLog {
 
   val deck = DeckGenerator.generate(2000, 100)
 
