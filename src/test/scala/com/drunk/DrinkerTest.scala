@@ -13,7 +13,7 @@ class DrinkerTest extends FlatSpec with Matchers {
 
     drinker drink Vodka() +50
 
-    drinker.state should be = HAPPY
+    assert(drinker.state == HAPPY)
   }
 
 }
