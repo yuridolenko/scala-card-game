@@ -19,7 +19,7 @@ class DrunkDSLTest extends FlatSpec with Matchers {
   }
 
   "Senior Drinker" should "drink and get happy" in {
-    val dima = Drinker("Dima", SENIOR)
+    val dima = Drinker("Senior", SENIOR)
 
     dima drink Beer() + 500 drink Beer() + 500
 
@@ -41,7 +41,7 @@ class DrunkDSLTest extends FlatSpec with Matchers {
   }
 
   "Buhalovo" should "makes everybody happy" in {
-    val buhalovo = Buhalovo("friday") + Drinker("Dima", EXPERT) + Drinker("Ded", EXPERT) + Drinker("Shu", EXPERT) + Drinker("Kenny", JUNIOR)
+    val buhalovo = Buhalovo("friday") + Drinker("Expert-1", EXPERT) + Drinker("Ded", EXPERT) + Drinker("Expert-2", EXPERT) + Drinker("Kenny", JUNIOR)
 
     buhalovo buhat Vodka() + 50
     buhalovo buhat Vodka() + 50
@@ -49,7 +49,7 @@ class DrunkDSLTest extends FlatSpec with Matchers {
     buhalovo buhat Vodka() + 50
     buhalovo buhat Vodka() + 50
 
-    buhalovo ? HAPPY map (_.name) should contain allOf ("Dima", "Ded", "Shu")
+    buhalovo ? HAPPY map (_.name) should contain allOf ("Expert-1", "Ded", "Expert-2")
     buhalovo ? DEAD map (_.name) should contain only "Kenny"
   }
 
