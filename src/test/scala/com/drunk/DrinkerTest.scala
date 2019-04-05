@@ -5,7 +5,6 @@ import com.drunk.State.HAPPY
 import org.scalatest.{FlatSpec, Matchers}
 import com.drunk.drinks.Vodka
 
-
 class DrinkerTest extends FlatSpec with Matchers {
 
   "Junior Drinker" should "drink and get happy" in {
