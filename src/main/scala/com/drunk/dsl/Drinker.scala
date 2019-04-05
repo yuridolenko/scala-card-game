@@ -1,6 +1,6 @@
-package com.drunk
+package com.drunk.dsl
 
-import com.drunk.drinks.Shot
+import com.drunk.dsl.drinks.Shot
 
 case class Drinker(name: String, grade: Grade.Value) {
 

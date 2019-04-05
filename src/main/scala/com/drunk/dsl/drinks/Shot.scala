@@ -1,4 +1,4 @@
-package com.drunk.drinks
+package com.drunk.dsl.drinks
 
 class Shot {
 
