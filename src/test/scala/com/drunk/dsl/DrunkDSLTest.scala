@@ -8,7 +8,7 @@ import org.scalatest.{FlatSpec, Matchers}
 class DrunkDSLTest extends FlatSpec with Matchers {
 
   "Junior Drinker" should "die" in {
-    val jun = Drinker("drinker", JUNIOR)
+    val jun = Drinker("Junior", JUNIOR)
 
     jun drink Vodka() + 150 drink Vodka() + 50 drink Beer() + 250 drink Vodka() + 50 drink Wine() + 50
     jun drink Vodka() + 50
