@@ -18,12 +18,12 @@ class DrinkerTest extends FlatSpec with Matchers {
   "Drinker" should "die" in {
     val drinker = Drinker("Dima", JUNIOR)
 
+    drinker drink Vodka() +150
     drinker drink Vodka() +50
-    drinker drink Vodka() +50
-    drinker drink Beer() +50
+    drinker drink Beer() +250
     drinker drink Vodka() +50
     drinker drink Wine() +50
-    drinker drink Beer() +50
+    drinker drink Beer() +350
     drinker drink Vodka() +50
 
     assert(drinker.state == DEAD)
