@@ -8,7 +8,7 @@ import com.drunk.drinks.Vodka
 class DrinkerTest extends FlatSpec with Matchers {
 
   "Junior Drinker" should "drink and get happy" in {
-    val drinker = Drinker("ded", JUNIOR)
+    val drinker = Drinker("Dima", JUNIOR)
 
     drinker drink Vodka() +50
 
