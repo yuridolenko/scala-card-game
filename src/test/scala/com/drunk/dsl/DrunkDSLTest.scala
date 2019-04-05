@@ -1,11 +1,9 @@
 package com.drunk.dsl
 
 import com.drunk.dsl.Grade.{EXPERT, JUNIOR, SENIOR}
-import com.drunk.dsl.State.{DEAD, HAPPY, VERY_HAPPY}
+import com.drunk.dsl.State._
 import com.drunk.dsl.drinks.{Beer, Vodka, Wine}
 import org.scalatest.{FlatSpec, Matchers}
-
-import scala.collection.mutable.ListBuffer
 
 class DrunkDSLTest extends FlatSpec with Matchers {
 
@@ -18,12 +16,30 @@ class DrunkDSLTest extends FlatSpec with Matchers {
     assert(jun.state == DEAD)
   }
 
-  "Senior Drinker" should "drink and get happy" in {
-    val dima = Drinker("Senior", SENIOR)
+  "Senior Drinker" should "drink and get happy and get very happy and die in the end" in {
+    val senior = Drinker("Senior", SENIOR)
 
-    dima drink Beer() + 500 drink Beer() + 500
+    assert(senior.state == OK)
 
-    assert(dima.state == VERY_HAPPY)
+    senior drink Beer() + 200
+
+    assert(senior.state == HAPPY)
+
+    senior drink Vodka() + 200
+
+    assert(senior.state == VERY_HAPPY)
+
+    senior drink Vodka() + 200
+
+    assert(senior.state == SHIT)
+
+    senior drink Vodka() + 200
+
+    assert(senior.state == WOOD)
+
+    senior drink Vodka() + 200
+
+    assert(senior.state == DEAD)
   }
 
   "Expert Drinker" should "always be happy" in {
@@ -49,9 +65,11 @@ class DrunkDSLTest extends FlatSpec with Matchers {
     buhalovo buhat Vodka() + 50
     buhalovo buhat Vodka() + 50
 
-    buhalovo ? HAPPY map (_.name) should contain allOf ("Expert-1", "Ded", "Expert-2")
-    buhalovo ? DEAD map (_.name) should contain only "Kenny"
-  }
+    val happyDrinkers = buhalovo whoIs HAPPY
+    val deadDrinkers = buhalovo whoIs DEAD
 
+    happyDrinkers  map (_.name) should contain allOf ("Expert-1", "Ded", "Expert-2")
+    deadDrinkers map (_.name) should contain only "Kenny"
+  }
 
 }

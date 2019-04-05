@@ -19,5 +19,5 @@ case class Buhalovo(description: String) {
     this
   }
 
-  def ?(state: State.Value): ListBuffer[Drinker] = drinkers.filter(_.state == state)
+  def whoIs(state: State.Value): ListBuffer[Drinker] = drinkers.filter(_.state == state)
 }
