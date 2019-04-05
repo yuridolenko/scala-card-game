@@ -8,43 +8,43 @@ import com.drunk.drinks.{Beer, Vodka, Wine}
 class DrinkerTest extends FlatSpec with Matchers {
 
   "Junior Drinker" should "die" in {
-    val drinker = Drinker("drinker", JUNIOR)
+    val jun = Drinker("drinker", JUNIOR)
 
-    drinker drink Vodka() +150
-    drinker drink Vodka() +50
-    drinker drink Beer() +250
-    drinker drink Vodka() +50
-    drinker drink Wine() +50
-    drinker drink Beer() +350
-    drinker drink Vodka() +50
+    jun drink Vodka() +150
+    jun drink Vodka() +50
+    jun drink Beer() +250
+    jun drink Vodka() +50
+    jun drink Wine() +50
+    jun drink Beer() +350
+    jun drink Vodka() +50
 
-    assert(drinker.state == DEAD)
+    assert(jun.state == DEAD)
   }
 
   "Senior Drinker" should "drink and get happy" in {
-    val drinker = Drinker("Dima", SENIOR)
+    val dima = Drinker("Dima", SENIOR)
 
-    drinker drink Beer() +500
+    dima drink Beer() +500
 
-    assert(drinker.state == HAPPY)
+    assert(dima.state == HAPPY)
   }
 
   "Expert Drinker" should "always be happy" in {
-    val drinker = Drinker("Ded", EXPERT)
+    val ded = Drinker("Ded", EXPERT)
 
-    drinker drink Vodka() +50
-    drinker drink Vodka() +50
-    drinker drink Vodka() +50
-    drinker drink Vodka() +50
-    drinker drink Vodka() +50
-    drinker drink Vodka() +50
-    drinker drink Vodka() +50
-    drinker drink Vodka() +50
-    drinker drink Vodka() +50
-    drinker drink Vodka() +50
-    drinker drink Beer() +500
+    ded drink Vodka() +50
+    ded drink Vodka() +50
+    ded drink Vodka() +50
+    ded drink Vodka() +50
+    ded drink Vodka() +50
+    ded drink Vodka() +50
+    ded drink Vodka() +50
+    ded drink Vodka() +50
+    ded drink Vodka() +50
+    ded drink Vodka() +50
+    ded drink Beer() +500
 
-    assert(drinker.state == HAPPY)
+    assert(ded.state == HAPPY)
   }
 
 
