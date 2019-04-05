@@ -12,4 +12,5 @@ class Shot {
 }
 
 case class Vodka() extends Shot
-
+case class Beer() extends Shot
+case class Wine() extends Shot

@@ -1,9 +1,9 @@
 package com.drunk
 
 import com.drunk.Grade.JUNIOR
-import com.drunk.State.HAPPY
+import com.drunk.State.{HAPPY, DEAD}
 import org.scalatest.{FlatSpec, Matchers}
-import com.drunk.drinks.Vodka
+import com.drunk.drinks.{Beer, Vodka, Wine}
 
 class DrinkerTest extends FlatSpec with Matchers {
 
@@ -13,6 +13,20 @@ class DrinkerTest extends FlatSpec with Matchers {
     drinker drink Vodka() +50
 
     assert(drinker.state == HAPPY)
+  }
+
+  "Drinker" should "die" in {
+    val drinker = Drinker("Dima", JUNIOR)
+
+    drinker drink Vodka() +50
+    drinker drink Vodka() +50
+    drinker drink Beer() +50
+    drinker drink Vodka() +50
+    drinker drink Wine() +50
+    drinker drink Beer() +50
+    drinker drink Vodka() +50
+
+    assert(drinker.state == DEAD)
   }
 
 }
